@@ -37,7 +37,13 @@ def get_crypto_data(ticker, period, interval):
             return None
         
         # yfinance retourne parfois des colonnes avec des majuscules. On standardise.
-        data.columns = [col.lower().replace(' ', '_') for col in data.columns]
+        # Gestion spéciale pour les colonnes multi-niveaux
+        if isinstance(data.columns, pd.MultiIndex):
+            # Si c'est un MultiIndex, on prend le premier niveau
+            data.columns = [col[0].lower().replace(' ', '_') for col in data.columns]
+        else:
+            # Sinon, traitement normal
+            data.columns = [col.lower().replace(' ', '_') for col in data.columns]
         
         print(f"SUCCÈS : Données pour {ticker} récupérées. {len(data)} lignes chargées.")
               
