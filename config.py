@@ -11,7 +11,13 @@ DATA_PERIOD = '1y'
 
 # L'intervalle de temps pour les bougies
 # Exemples : '1d' (journalier), '1h' (horaire), '4h'
-DATA_INTERVAL = '1d'
+DATA_INTERVAL = '1h'
+
+# Liste des intervalles à tester pour trouver le meilleur (optionnel)
+# Exemple : ['15m', '30m', '1h', '2h', '4h', '1d']
+TEST_INTERVALS = ['15m', '30m', '1h', '2h', '4h']
+
+# Nombre de données récentes à analyser (0 = toutes les données)
 
 
 # -- Configuration des Indicateurs --
