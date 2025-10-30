@@ -1,0 +1,261 @@
+# Timeframes Configuration
+
+# ===== STANDARD TIMEFRAMES =====
+timeframes:
+  # Format: [code, minutes, display_name, category]
+  
+  # Ultra Short Term (Scalping)
+  - code: 1m
+    minutes: 1
+    display: "1 Minute"
+    category: scalping
+    enabled: false
+    priority: 1
+    
+  - code: 5m
+    minutes: 5
+    display: "5 Minutes"
+    category: scalping
+    enabled: false
+    priority: 2
+    
+  - code: 15m
+    minutes: 15
+    display: "15 Minutes"
+    category: scalping
+    enabled: false
+    priority: 3
+    
+  # Short Term (Intraday)
+  - code: 30m
+    minutes: 30
+    display: "30 Minutes"
+    category: intraday
+    enabled: false
+    priority: 4
+    
+  - code: 1h
+    minutes: 60
+    display: "1 Hour"
+    category: intraday
+    enabled: true
+    priority: 5
+    
+  - code: 4h
+    minutes: 240
+    display: "4 Hours"
+    category: intraday
+    enabled: true
+    priority: 6
+    
+  # Medium Term (Swing)
+  - code: 1d
+    minutes: 1440
+    display: "1 Day"
+    category: swing
+    enabled: true
+    priority: 7
+    
+  - code: 3d
+    minutes: 4320
+    display: "3 Days"
+    category: swing
+    enabled: false
+    priority: 8
+    
+  # Long Term (Position)
+  - code: 1w
+    minutes: 10080
+    display: "1 Week"
+    category: position
+    enabled: false
+    priority: 9
+    
+  - code: 1M
+    minutes: 43200
+    display: "1 Month"
+    category: position
+    enabled: false
+    priority: 10
+
+# ===== CATEGORIES =====
+categories:
+  scalping:
+    description: "Ultra-short term trading (minutes to hours)"
+    typical_holding_period: "Minutes to hours"
+    risk_level: very_high
+    recommended_for: experienced_traders
+    
+  intraday:
+    description: "Short-term trading (hours to a day)"
+    typical_holding_period: "Hours to 1 day"
+    risk_level: high
+    recommended_for: active_traders
+    
+  swing:
+    description: "Medium-term trading (days to weeks)"
+    typical_holding_period: "Days to weeks"
+    risk_level: medium
+    recommended_for: most_traders
+    
+  position:
+    description: "Long-term trading (weeks to months)"
+    typical_holding_period: "Weeks to months"
+    risk_level: low
+    recommended_for: patient_investors
+
+# ===== CONFLUENCE ANALYSIS =====
+confluence:
+  # Minimum number of aligned timeframes for strong signal
+  min_aligned: 3
+  
+  # Timeframe relationships for confluence checking
+  relationships:
+    # For 1h signals, check these higher timeframes
+    1h:
+      check: [4h, 1d]
+      weight: 1.0
+      
+    # For 4h signals, check these higher timeframes
+    4h:
+      check: [1d, 1w]
+      weight: 1.2
+      
+    # For 1d signals, check these higher timeframes
+    1d:
+      check: [1w]
+      weight: 1.5
+      
+  # Weight multipliers for confluence
+  weights:
+    same_direction_2tf: 1.3   # 2 timeframes aligned
+    same_direction_3tf: 1.6   # 3 timeframes aligned
+    same_direction_4tf: 2.0   # 4+ timeframes aligned
+
+# ===== DATA REQUIREMENTS =====
+data_requirements:
+  # Minimum historical candles needed for each timeframe
+  min_candles:
+    1m: 500
+    5m: 500
+    15m: 500
+    30m: 500
+    1h: 500
+    4h: 500
+    1d: 365
+    3d: 365
+    1w: 104  # ~2 years
+    1M: 36   # 3 years
+    
+  # Lookback periods for different analyses
+  lookback:
+    indicators: 200      # Candles for indicator calculation
+    ml_training: 1000    # Candles for ML training
+    backtesting: 500     # Candles for backtesting
+
+# ===== SCANNER SETTINGS PER TIMEFRAME =====
+scanner_settings:
+  1m:
+    scan_frequency: 60    # seconds
+    confidence_boost: 0.0
+    
+  5m:
+    scan_frequency: 300   # seconds (5 min)
+    confidence_boost: 0.05
+    
+  15m:
+    scan_frequency: 300
+    confidence_boost: 0.10
+    
+  30m:
+    scan_frequency: 600   # seconds (10 min)
+    confidence_boost: 0.12
+    
+  1h:
+    scan_frequency: 900   # seconds (15 min)
+    confidence_boost: 0.15
+    
+  4h:
+    scan_frequency: 1800  # seconds (30 min)
+    confidence_boost: 0.20
+    
+  1d:
+    scan_frequency: 3600  # seconds (1 hour)
+    confidence_boost: 0.25
+    
+  3d:
+    scan_frequency: 7200  # seconds (2 hours)
+    confidence_boost: 0.30
+    
+  1w:
+    scan_frequency: 14400 # seconds (4 hours)
+    confidence_boost: 0.35
+
+# ===== TRADING STRATEGIES BY TIMEFRAME =====
+strategies:
+  scalping:
+    timeframes: [1m, 5m, 15m]
+    style: aggressive
+    max_trades_per_day: 20
+    min_reward_risk: 1.5
+    typical_duration_hours: 0.5
+    
+  day_trading:
+    timeframes: [15m, 30m, 1h]
+    style: active
+    max_trades_per_day: 10
+    min_reward_risk: 2.0
+    typical_duration_hours: 4
+    
+  swing_trading:
+    timeframes: [4h, 1d]
+    style: moderate
+    max_trades_per_week: 5
+    min_reward_risk: 2.5
+    typical_duration_days: 5
+    
+  position_trading:
+    timeframes: [1d, 1w]
+    style: conservative
+    max_trades_per_month: 3
+    min_reward_risk: 3.0
+    typical_duration_weeks: 4
+
+# ===== ALERT PRIORITIES BY TIMEFRAME =====
+alert_priorities:
+  # Higher timeframes get higher priority
+  1m: 1
+  5m: 2
+  15m: 3
+  30m: 4
+  1h: 5
+  4h: 6
+  1d: 7
+  3d: 8
+  1w: 9
+  1M: 10
+
+# ===== PRESETS =====
+presets:
+  conservative:
+    enabled_timeframes: [1d, 1w]
+    min_confluence: 2
+    confidence_threshold: 0.80
+    
+  balanced:
+    enabled_timeframes: [1h, 4h, 1d]
+    min_confluence: 3
+    confidence_threshold: 0.70
+    
+  aggressive:
+    enabled_timeframes: [15m, 1h, 4h]
+    min_confluence: 2
+    confidence_threshold: 0.65
+    
+  scalper:
+    enabled_timeframes: [1m, 5m, 15m, 1h]
+    min_confluence: 2
+    confidence_threshold: 0.60
+
+# ===== ACTIVE PRESET =====
+active_preset: balanced

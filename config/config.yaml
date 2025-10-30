@@ -1,0 +1,378 @@
+# ===== SCANNER CONFIGURATION =====
+scanner:
+  scan_interval: 300  # seconds (5 minutes)
+  symbols_count: 10
+  
+  timeframes:
+    scalping:
+      - 1m
+      - 5m
+      - 15m
+    intraday:
+      - 30m
+      - 1h
+      - 4h
+    swing:
+      - 1d
+      - 3d
+    position:
+      - 1w
+  
+  # Active timeframes for scanning
+  active_timeframes:
+    - 1h
+    - 4h
+    - 1d
+  
+  # Minimum confluence required (number of timeframes aligned)
+  min_confluence: 3
+
+# ===== INDICATORS CONFIGURATION =====
+indicators:
+  money_flow:
+    period: 14
+    period_long: 28
+    oversold: 20
+    overbought: 80
+    
+  wave_trend:
+    channel_length: 9
+    average_length: 12
+    oversold: -60
+    overbought: 60
+    
+  momentum:
+    rsi_periods:
+      - 14
+      - 21
+      - 28
+    weights:
+      - 0.5
+      - 0.3
+      - 0.2
+      
+  divergence:
+    lookback: 20
+    pivot_order: 5
+    min_touches: 2
+    types:
+      - regular_bullish
+      - regular_bearish
+      - hidden_bullish
+      - hidden_bearish
+      
+  vwap:
+    reset_periods:
+      - 1d  # Daily VWAP
+      - 1w  # Weekly VWAP
+      - 1M  # Monthly VWAP
+      
+  support_resistance:
+    window: 50
+    touches_required: 3
+    cluster_tolerance: 0.005  # 0.5% price tolerance
+
+# ===== MACHINE LEARNING CONFIGURATION =====
+ml_models:
+  # General ML settings
+  confidence_threshold: 0.70
+  retrain_frequency: 7  # days
+  validation_split: 0.2
+  test_split: 0.1
+  random_state: 42
+  
+  # Money Flow Classifier
+  money_flow_classifier:
+    model_type: lightgbm
+    hyperparameters:
+      num_leaves: 31
+      learning_rate: 0.05
+      n_estimators: 500
+      max_depth: -1
+      min_child_samples: 20
+      subsample: 0.8
+      colsample_bytree: 0.8
+      reg_alpha: 0.1
+      reg_lambda: 0.1
+    class_weight: balanced
+    early_stopping_rounds: 50
+    
+  # Wave Trend Predictor
+  wave_trend_predictor:
+    model_type: xgboost
+    num_classes: 3  # BUY, HOLD, SELL
+    hyperparameters:
+      max_depth: 6
+      learning_rate: 0.05
+      n_estimators: 300
+      subsample: 0.8
+      colsample_bytree: 0.8
+      gamma: 0.1
+      min_child_weight: 1
+      
+  # Momentum Analyzer
+  momentum_analyzer:
+    model_type: random_forest
+    hyperparameters:
+      n_estimators: 200
+      max_depth: 10
+      min_samples_split: 10
+      min_samples_leaf: 5
+      max_features: sqrt
+      
+  # Pattern Recognizer (Divergences)
+  pattern_recognizer:
+    model_type: ensemble
+    base_models:
+      - random_forest
+      - gradient_boosting
+    voting: soft
+    
+  # Signal Aggregator (Meta-Model)
+  signal_aggregator:
+    model_type: stacking
+    meta_learner: logistic_regression
+    cv_folds: 5
+
+# ===== DATA LABELING CONFIGURATION =====
+labeling:
+  # Forward-looking period for label generation
+  lookforward_hours:
+    scalping: 4
+    intraday: 12
+    swing: 48
+    position: 168  # 1 week
+    
+  # Return thresholds for labeling
+  returns:
+    bull_market:
+      buy_threshold: 0.03   # 3% gain
+      sell_threshold: -0.03  # 3% loss
+    bear_market:
+      buy_threshold: 0.05   # 5% gain
+      sell_threshold: -0.05  # 5% loss
+      
+  # Max acceptable drawdown before take profit
+  max_drawdown: 0.02  # 2%
+  
+  # Volatility-adjusted thresholds
+  volatility_adjustment: true
+
+# ===== FEATURE ENGINEERING =====
+features:
+  # Technical indicators features
+  price_features:
+    - open
+    - high
+    - low
+    - close
+    - volume
+    
+  # Moving averages
+  moving_averages:
+    - 20
+    - 50
+    - 100
+    - 200
+    
+  # Derived features
+  derived:
+    - returns
+    - log_returns
+    - volatility
+    - range
+    - typical_price
+    - vwap
+    
+  # Momentum features
+  momentum:
+    - rsi_14
+    - rsi_21
+    - macd
+    - stochastic
+    
+  # Volatility features
+  volatility:
+    - atr_14
+    - bollinger_bands
+    - keltner_channels
+    
+  # Volume features
+  volume:
+    - volume_sma
+    - volume_ratio
+    - obv  # On-Balance Volume
+    - cmf  # Chaikin Money Flow
+    
+  # Multi-timeframe features
+  higher_timeframe:
+    enabled: true
+    timeframes:
+      - 4h  # for 1h data
+      - 1d  # for 4h data
+      - 1w  # for 1d data
+
+# ===== NOTIFICATIONS CONFIGURATION =====
+notifications:
+  enabled: true
+  min_confidence: 0.75  # Only notify for high-confidence signals
+  
+  platforms:
+    telegram:
+      enabled: true
+      format: markdown
+      include_chart: false
+      
+    discord:
+      enabled: false
+      format: embed
+      include_chart: true
+      
+  alert_types:
+    - strong_buy
+    - strong_sell
+    - divergence_detected
+    - high_confluence
+    
+  cooldown: 300  # seconds between alerts for same symbol
+
+# ===== RISK MANAGEMENT =====
+risk_management:
+  max_position_size: 0.10  # 10% of capital per position
+  max_total_exposure: 0.50  # 50% of capital total
+  
+  stop_loss:
+    enabled: true
+    percentage: 0.02  # 2%
+    trailing: true
+    
+  take_profit:
+    enabled: true
+    percentage: 0.05  # 5%
+    partial_exits:
+      - percent: 0.50  # Take 50% profit at
+        target: 0.03    # 3% gain
+      - percent: 0.30  # Take 30% profit at
+        target: 0.05    # 5% gain
+      # Let 20% run
+      
+  max_trades_per_day: 10
+  max_consecutive_losses: 3  # Pause trading after 3 losses
+
+# ===== BACKTESTING CONFIGURATION =====
+backtesting:
+  initial_capital: 10000
+  commission:
+    percentage: 0.001  # 0.1%
+    minimum: 0.0  # Minimum commission
+    
+  slippage:
+    percentage: 0.001  # 0.1%
+    
+  margin:
+    enabled: false
+    leverage: 1
+    
+  reinvest_profits: true
+  
+  metrics:
+    - total_return
+    - sharpe_ratio
+    - sortino_ratio
+    - max_drawdown
+    - win_rate
+    - profit_factor
+    - avg_win
+    - avg_loss
+    - expectancy
+
+# ===== DATA COLLECTION =====
+data_collection:
+  sources:
+    - binance
+    
+  rate_limits:
+    requests_per_minute: 1200
+    weight_per_minute: 1200
+    
+  retry:
+    max_attempts: 3
+    backoff_factor: 2
+    
+  validation:
+    check_gaps: true
+    fill_missing: true
+    method: forward_fill
+    
+  storage:
+    format: parquet  # or csv, hdf5
+    compression: gzip
+    partition_by: symbol
+
+# ===== LOGGING =====
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+  handlers:
+    console:
+      enabled: true
+      level: INFO
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+      
+    file:
+      enabled: true
+      level: DEBUG
+      path: logs/signalcipher.log
+      max_bytes: 10485760  # 10MB
+      backup_count: 5
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s"
+      
+    error_file:
+      enabled: true
+      level: ERROR
+      path: logs/errors.log
+      max_bytes: 10485760  # 10MB
+      backup_count: 3
+      
+  loggers:
+    - signalcipher.scanner
+    - signalcipher.indicators
+    - signalcipher.ml_models
+    - signalcipher.data_collection
+
+# ===== PERFORMANCE OPTIMIZATION =====
+performance:
+  cache:
+    enabled: true
+    backend: redis  # redis or memory
+    ttl: 300  # seconds
+    
+  parallel_processing:
+    enabled: true
+    max_workers: 4
+    
+  batch_size:
+    data_collection: 1000
+    indicator_calculation: 5000
+    ml_prediction: 100
+
+# ===== MONITORING =====
+monitoring:
+  enabled: false
+  
+  metrics_export:
+    prometheus:
+      enabled: false
+      port: 9090
+      
+  health_check:
+    enabled: true
+    interval: 60  # seconds
+    endpoint: /health
+    
+  performance_tracking:
+    - api_latency
+    - scan_duration
+    - model_inference_time
+    - memory_usage
+    - cpu_usage

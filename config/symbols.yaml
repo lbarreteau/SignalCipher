@@ -1,0 +1,170 @@
+# Top Cryptocurrencies to Scan
+
+# ===== TOP 10 CRYPTOCURRENCIES =====
+top_10:
+  - symbol: BTC/USDT
+    name: Bitcoin
+    base: BTC
+    quote: USDT
+    rank: 1
+    enabled: true
+    
+  - symbol: ETH/USDT
+    name: Ethereum
+    base: ETH
+    quote: USDT
+    rank: 2
+    enabled: true
+    
+  - symbol: BNB/USDT
+    name: Binance Coin
+    base: BNB
+    quote: USDT
+    rank: 3
+    enabled: true
+    
+  - symbol: SOL/USDT
+    name: Solana
+    base: SOL
+    quote: USDT
+    rank: 4
+    enabled: true
+    
+  - symbol: XRP/USDT
+    name: Ripple
+    base: XRP
+    quote: USDT
+    rank: 5
+    enabled: true
+    
+  - symbol: ADA/USDT
+    name: Cardano
+    base: ADA
+    quote: USDT
+    rank: 6
+    enabled: true
+    
+  - symbol: AVAX/USDT
+    name: Avalanche
+    base: AVAX
+    quote: USDT
+    rank: 7
+    enabled: true
+    
+  - symbol: DOT/USDT
+    name: Polkadot
+    base: DOT
+    quote: USDT
+    rank: 8
+    enabled: true
+    
+  - symbol: MATIC/USDT
+    name: Polygon
+    base: MATIC
+    quote: USDT
+    rank: 9
+    enabled: true
+    
+  - symbol: LINK/USDT
+    name: Chainlink
+    base: LINK
+    quote: USDT
+    rank: 10
+    enabled: true
+
+# ===== ADDITIONAL ALTCOINS (Optional) =====
+altcoins:
+  - symbol: ATOM/USDT
+    name: Cosmos
+    enabled: false
+    
+  - symbol: UNI/USDT
+    name: Uniswap
+    enabled: false
+    
+  - symbol: ALGO/USDT
+    name: Algorand
+    enabled: false
+    
+  - symbol: FTM/USDT
+    name: Fantom
+    enabled: false
+    
+  - symbol: NEAR/USDT
+    name: Near Protocol
+    enabled: false
+    
+  - symbol: APT/USDT
+    name: Aptos
+    enabled: false
+    
+  - symbol: ARB/USDT
+    name: Arbitrum
+    enabled: false
+    
+  - symbol: OP/USDT
+    name: Optimism
+    enabled: false
+
+# ===== STABLECOINS (For reference/testing) =====
+stablecoins:
+  - USDT
+  - USDC
+  - BUSD
+  - DAI
+
+# ===== SYMBOL FILTERS =====
+filters:
+  # Minimum 24h volume (in USDT)
+  min_volume_24h: 10000000  # 10M USDT
+  
+  # Minimum market cap (in USD)
+  min_market_cap: 500000000  # 500M USD
+  
+  # Exclude symbols
+  exclude:
+    - LUNA/USDT  # Example: exclude due to issues
+    - UST/USDT
+    
+  # Only include symbols with these quote currencies
+  allowed_quotes:
+    - USDT
+    - USDC
+    - BTC
+
+# ===== WATCHLIST (Custom tracking) =====
+watchlist:
+  defi:
+    - UNI/USDT
+    - AAVE/USDT
+    - SUSHI/USDT
+    - CAKE/USDT
+    
+  layer2:
+    - MATIC/USDT
+    - ARB/USDT
+    - OP/USDT
+    
+  gaming:
+    - AXS/USDT
+    - SAND/USDT
+    - MANA/USDT
+    
+  ai:
+    - FET/USDT
+    - AGIX/USDT
+    - OCEAN/USDT
+
+# ===== AUTO-UPDATE SETTINGS =====
+auto_update:
+  # Automatically update top cryptos list based on market cap
+  enabled: false
+  
+  # Update frequency
+  frequency: daily  # daily, weekly, monthly
+  
+  # Keep top N cryptocurrencies
+  keep_top: 10
+  
+  # Source for market data
+  source: coingecko  # coingecko, coinmarketcap
