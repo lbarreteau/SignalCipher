@@ -192,14 +192,15 @@ except NetworkError as e:
 - K crosses above D below 20: +20 points (bullish signal)
 - Both K and D < 20: +10 points (oversold)
 - K crosses below D above 80: -20 points (bearish signal)
+- Both K and D > 80: -10 points (overbought)
 
 ### VWAP (Volume Weighted Average Price)
 - Calculate daily VWAP
 - Compare current price to VWAP
 
 **Scoring Rules:**
-- Close < VWAP: +10 points (potential support)
-- Close > VWAP: -10 points (potential resistance)
+- Close > VWAP: +10 points (bullish momentum, price above average)
+- Close < VWAP: -10 points (bearish momentum, price below average)
 
 ### MACD
 - Fast: 12, Slow: 26, Signal: 9 (default)
@@ -220,7 +221,21 @@ except NetworkError as e:
 ## Scoring System
 
 ### Score Calculation
-Total score is the sum of all indicator scores. Range: -100 to +100
+Total score is the sum of all indicator scores. Range: -85 to +85
+
+**Maximum Positive Score**: +85
+- MFI: +25 (extreme oversold)
+- StochRSI: +20 (K crosses above D below 20) + +10 (both < 20) = +30
+- VWAP: +10 (close > VWAP)
+- MACD: +15 (histogram crosses positive)
+- RSI: +5 (RSI < 30)
+
+**Maximum Negative Score**: -85
+- MFI: -25 (extreme overbought)
+- StochRSI: -20 (K crosses below D above 80) + -10 (both > 80) = -30
+- VWAP: -10 (close < VWAP)
+- MACD: -15 (histogram crosses negative)
+- RSI: -5 (RSI > 70)
 
 ### Signal Thresholds
 - **STRONG BUY**: Score > 75
