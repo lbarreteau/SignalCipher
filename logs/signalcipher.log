@@ -147,3 +147,103 @@
 2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:205 -    Precision: 0.0000
 2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:206 -    Recall: 0.0000
 2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - save:289 - 💾 Model saved to models/money_flow_classifier.pkl
+2025-10-30 16:51:48 - SignalCipher.data_collection - [32mINFO[0m - __init__:48 - ✅ Binance client initialized
+2025-10-30 16:51:48 - SignalCipher.data_collection - [32mINFO[0m - __init__:48 - ✅ Binance client initialized
+2025-10-30 16:51:48 - SignalCipher.scanner - [32mINFO[0m - __init__:35 - ✅ Market Scanner initialized
+2025-10-30 16:51:48 - SignalCipher.ml_models - [32mINFO[0m - __init__:69 - ✅ Money Flow Classifier initialized (random_forest)
+2025-10-30 16:51:48 - SignalCipher.ml_models - [32mINFO[0m - load:306 - 📂 Model loaded from models/money_flow_classifier.pkl
+2025-10-30 16:51:48 - SignalCipher.signals - [32mINFO[0m - __init__:44 - ✅ ML model loaded
+2025-10-30 16:51:48 - SignalCipher.features - [32mINFO[0m - __init__:31 - ✅ Feature Engineering initialized
+2025-10-30 16:51:48 - SignalCipher.signals - [32mINFO[0m - __init__:51 - ✅ Signal Generator initialized
+2025-10-30 16:51:48 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning BTC/USDT 1h...
+2025-10-30 16:51:48 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching BTC/USDT 1h data (limit=200)
+2025-10-30 16:51:51 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for BTC/USDT 1h
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 2 buy signals, 4 sell signals
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 1 buy signals, 3 sell signals, 1 bullish divergences
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 3 buy signals, 5 sell signals
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 9 buy signals, 5 sell signals
+2025-10-30 16:51:51 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ BTC/USDT scan completed
+2025-10-30 16:51:51 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:51 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:51 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for BTC/USDT: NEUTRAL (score: 1.0)
+2025-10-30 16:51:51 - SignalCipher.signals - [32mINFO[0m - scan_all_symbols:239 - 🔍 Generating signals for 5 symbols...
+2025-10-30 16:51:51 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning BTC/USDT 1h...
+2025-10-30 16:51:51 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching BTC/USDT 1h data (limit=200)
+2025-10-30 16:51:51 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for BTC/USDT 1h
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 2 buy signals, 4 sell signals
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 1 buy signals, 3 sell signals, 1 bullish divergences
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 3 buy signals, 5 sell signals
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:51 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 9 buy signals, 5 sell signals
+2025-10-30 16:51:51 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ BTC/USDT scan completed
+2025-10-30 16:51:51 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:51 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:51 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for BTC/USDT: NEUTRAL (score: 1.0)
+2025-10-30 16:51:51 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning ETH/USDT 1h...
+2025-10-30 16:51:51 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching ETH/USDT 1h data (limit=200)
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for ETH/USDT 1h
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 5 buy signals, 3 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 2 buy signals, 3 sell signals, 0 bullish divergences
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 3 buy signals, 5 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 8 buy signals, 4 sell signals
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ ETH/USDT scan completed
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:52 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for ETH/USDT: BUY (score: 2.0)
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning BNB/USDT 1h...
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching BNB/USDT 1h data (limit=200)
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for BNB/USDT 1h
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 0 buy signals, 4 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 3 buy signals, 1 sell signals, 1 bullish divergences
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 1 buy signals, 6 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 6 buy signals, 5 sell signals
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ BNB/USDT scan completed
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:52 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for BNB/USDT: NEUTRAL (score: 1.0)
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning SOL/USDT 1h...
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching SOL/USDT 1h data (limit=200)
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for SOL/USDT 1h
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 2 buy signals, 2 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 1 buy signals, 5 sell signals, 0 bullish divergences
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 2 buy signals, 4 sell signals
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:52 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 6 buy signals, 7 sell signals
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ SOL/USDT scan completed
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:52 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:52 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for SOL/USDT: BUY (score: 1.5)
+2025-10-30 16:51:52 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:55 - 🔍 Scanning XRP/USDT 1h...
+2025-10-30 16:51:52 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching XRP/USDT 1h data (limit=200)
+2025-10-30 16:51:53 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 200 candles for XRP/USDT 1h
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 200 candles, 1 buy signals, 7 sell signals
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 200 candles, 1 buy signals, 5 sell signals, 0 bullish divergences
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 200 candles, 4 buy signals, 8 sell signals
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:51:53 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 11 buy signals, 5 sell signals
+2025-10-30 16:51:53 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ XRP/USDT scan completed
+2025-10-30 16:51:53 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:51:53 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:51:53 - SignalCipher.signals - [32mINFO[0m - generate_signal:166 - ✅ Signal generated for XRP/USDT: STRONG BUY (score: 4.0)
+2025-10-30 16:51:53 - SignalCipher.signals - [32mINFO[0m - scan_all_symbols:265 - ✅ Signals generated for 5 symbols
