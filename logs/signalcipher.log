@@ -104,3 +104,46 @@
 2025-10-30 16:45:18 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 200 candles, 12 buy signals, 5 sell signals
 2025-10-30 16:45:18 - SignalCipher.scanner - [32mINFO[0m - scan_symbol:70 - ✅ XRP/USDT scan completed
 2025-10-30 16:45:18 - SignalCipher.scanner - [32mINFO[0m - scan_multiple_symbols:226 - ✅ Scan completed: 5 symbols analyzed
+2025-10-30 16:48:21 - SignalCipher.data_collection - [32mINFO[0m - __init__:48 - ✅ Binance client initialized
+2025-10-30 16:48:21 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching BTC/USDT 1h data (limit=500)
+2025-10-30 16:48:24 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 500 candles for BTC/USDT 1h
+2025-10-30 16:48:24 - SignalCipher.features - [32mINFO[0m - __init__:31 - ✅ Feature Engineering initialized
+2025-10-30 16:48:24 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 500 candles, 6 buy signals, 7 sell signals
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 500 candles, 11 buy signals, 6 sell signals, 4 bullish divergences
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 500 candles, 12 buy signals, 9 sell signals
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:48:24 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 500 candles, 20 buy signals, 20 sell signals
+2025-10-30 16:48:24 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:48:24 - SignalCipher.features - [32mINFO[0m - prepare_ml_data:342 - 📊 ML data prepared: 390 samples, 54 features
+2025-10-30 16:49:35 - SignalCipher.data_collection - [32mINFO[0m - __init__:48 - ✅ Binance client initialized
+2025-10-30 16:49:35 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:70 - 📊 Fetching BTC/USDT 1h data (limit=1000)
+2025-10-30 16:49:39 - SignalCipher.data_collection - [32mINFO[0m - fetch_ohlcv:94 - ✅ Fetched 1000 candles for BTC/USDT 1h
+2025-10-30 16:49:39 - SignalCipher.ml_models - [32mINFO[0m - __init__:69 - ✅ Money Flow Classifier initialized (random_forest)
+2025-10-30 16:49:39 - SignalCipher.features - [32mINFO[0m - __init__:31 - ✅ Feature Engineering initialized
+2025-10-30 16:49:39 - SignalCipher.features - [32mINFO[0m - engineer_all_features:269 - 🔬 Engineering features...
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:176 - Calculating WaveTrend: channel_len=9, avg_len=12
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_wavetrend:191 - ✅ WaveTrend added: 1000 candles, 11 buy signals, 15 sell signals
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:219 - Calculating Money Flow Index: period=14
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_money_flow:238 - ✅ MFI added: 1000 candles, 22 buy signals, 15 sell signals, 7 bullish divergences
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_rsi:212 - Calculating RSI: period=14
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_rsi:226 - ✅ RSI added: 1000 candles, 22 buy signals, 21 sell signals
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:262 - Calculating Stochastic RSI: rsi_period=14, stoch_period=14
+2025-10-30 16:49:39 - SignalCipher.indicators - [32mINFO[0m - add_stochastic_rsi:277 - ✅ StochRSI added: 1000 candles, 39 buy signals, 42 sell signals
+2025-10-30 16:49:39 - SignalCipher.features - [32mINFO[0m - engineer_all_features:298 - ✅ Feature engineering completed: 54 features
+2025-10-30 16:49:39 - SignalCipher.features - [32mINFO[0m - prepare_ml_data:342 - 📊 ML data prepared: 890 samples, 54 features
+2025-10-30 16:49:39 - SignalCipher.ml_models - [32mINFO[0m - prepare_data:108 - 📊 Data prepared: 712 train, 178 test samples
+2025-10-30 16:49:39 - SignalCipher.ml_models - [32mINFO[0m - train:129 - 🎓 Training random_forest model...
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - train:153 - ✅ Training completed!
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - train:154 -    CV ROC-AUC: 0.8242 (+/- 0.0382)
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - train:155 -    Train accuracy: 0.9677
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:177 - 📊 Evaluating model...
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:202 - ✅ Evaluation completed!
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:203 -    Test accuracy: 0.9270
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:204 -    ROC-AUC: 0.8047
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:205 -    Precision: 0.0000
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - evaluate:206 -    Recall: 0.0000
+2025-10-30 16:49:41 - SignalCipher.ml_models - [32mINFO[0m - save:289 - 💾 Model saved to models/money_flow_classifier.pkl
